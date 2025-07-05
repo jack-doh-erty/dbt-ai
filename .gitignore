@@ -30,4 +30,5 @@ Thumbs.db
 .env.local
 
 # Credentials (if stored locally)
-profiles.yml 
+profiles.yml
+.user.yml 
