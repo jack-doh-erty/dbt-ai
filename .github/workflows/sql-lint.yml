@@ -40,7 +40,7 @@ jobs:
         for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
           if [[ $file == *.sql ]]; then
             echo "Linting $file"
-            sqlfluff lint "$file" --format github-annotation
+            sqlfluff lint "$file" --config .sqlfluff --format github-annotation
           fi
         done
         
@@ -50,6 +50,6 @@ jobs:
         for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
           if [[ $file == *.sql ]]; then
             echo "Checking $file for errors"
-            sqlfluff lint "$file" --fail-on-error
+            sqlfluff lint "$file" --config .sqlfluff --fail-on-error
           fi
         done 
