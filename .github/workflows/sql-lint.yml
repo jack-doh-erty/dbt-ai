@@ -21,14 +21,10 @@ jobs:
       with:
         python-version: '3.11'
         
-    - name: Install dependencies
+    - name: Install sqlfluff
       run: |
         python -m pip install --upgrade pip
-        pip install -r requirements.txt
-        
-    - name: Install dbt dependencies
-      run: |
-        dbt deps
+        pip install sqlfluff
         
     - name: Lint SQL files
       run: |
