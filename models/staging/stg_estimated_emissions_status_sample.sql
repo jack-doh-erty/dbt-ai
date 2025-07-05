@@ -25,4 +25,5 @@ select
     estimated_co2_total_tonnes,
     missing_actual_times,
     is_operating
-from {{ source('oag_flight_emissions_data_sample', 'estimated_emissions_status_sample') }} 
+from
+    {{ source('oag_flight_emissions_data_sample', 'estimated_emissions_status_sample') }}

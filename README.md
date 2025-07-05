@@ -127,6 +127,21 @@ dbt docs serve
 python utils/query_highest_co2_route.py
 ```
 
+### Lint SQL Code
+```bash
+# Lint all SQL files
+sqlfluff lint models/
+
+# Lint specific files
+sqlfluff lint models/staging/stg_estimated_emissions_schedules_sample.sql
+
+# Auto-fix linting issues
+sqlfluff fix models/
+
+# Check specific rules
+sqlfluff lint models/ --rules L010,L014,L019,L039
+```
+
 ## 📈 Key Metrics
 
 The project provides insights into:
@@ -146,6 +161,18 @@ The project provides insights into:
 
 ### Modifying Tests
 Edit the YAML files in the model directories to add or modify data quality tests.
+
+### Code Quality with SQLFluff
+This project uses SQLFluff for SQL code linting and formatting. The configuration enforces:
+- **Leading commas** (L019)
+- **Lowercase keywords and identifiers** (L010, L014)
+- **Explicit GROUP BY clauses** (L039)
+- **120 character line length** limit
+
+To maintain code quality:
+1. Run `sqlfluff lint models/` before committing changes
+2. Use `sqlfluff fix models/` to automatically fix formatting issues
+3. Address any remaining linting warnings manually
 
 ## 🤝 Contributing
 

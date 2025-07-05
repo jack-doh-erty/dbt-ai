@@ -1,0 +1,41 @@
+name: SQL Lint
+
+on:
+  pull_request:
+    paths:
+      - 'models/**/*.sql'
+      - 'macros/**/*.sql'
+      - '.sqlfluff'
+    types: [opened, synchronize, reopened]
+
+jobs:
+  sqlfluff:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+        
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        
+    - name: Install dbt dependencies
+      run: |
+        dbt deps
+        
+    - name: Lint SQL files
+      run: |
+        sqlfluff lint models/ --format github-annotation
+        sqlfluff lint macros/ --format github-annotation
+        
+    - name: Check for linting errors
+      run: |
+        sqlfluff lint models/ --fail-on-error
+        sqlfluff lint macros/ --fail-on-error 
