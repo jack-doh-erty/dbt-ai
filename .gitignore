@@ -1,0 +1,33 @@
+# dbt specific
+target/
+dbt_packages/
+dbt_internal_packages/
+logs/
+*.log
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment variables
+.env
+.env.local
+
+# Credentials (if stored locally)
+profiles.yml 
