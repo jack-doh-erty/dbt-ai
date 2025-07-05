@@ -1,0 +1,58 @@
+version: 2
+
+models:
+  - name: mart_daily_emissions_summary
+    description: "Daily emissions summary comparing scheduled vs actual flight emissions by carrier, route, and aircraft type"
+    columns:
+      - name: flight_date
+        description: "Date of the flight"
+        tests:
+          - not_null
+      
+      - name: carrier_code
+        description: "Airline carrier code"
+        tests:
+          - not_null
+      
+      - name: departure_airport
+        description: "IATA code for departure airport"
+        tests:
+          - not_null
+      
+      - name: arrival_airport
+        description: "IATA code for arrival airport"
+        tests:
+          - not_null
+      
+      - name: aircraft_type
+        description: "Aircraft type code"
+      
+      - name: scheduled_flights
+        description: "Number of scheduled flights"
+      
+      - name: scheduled_co2_tonnes
+        description: "Total scheduled CO2 emissions in tonnes"
+      
+      - name: scheduled_fuel_tonnes
+        description: "Total scheduled fuel burn in tonnes"
+      
+      - name: actual_flights
+        description: "Number of actual flights"
+      
+      - name: actual_co2_tonnes
+        description: "Total actual CO2 emissions in tonnes"
+      
+      - name: actual_fuel_tonnes
+        description: "Total actual fuel burn in tonnes"
+      
+      - name: operating_flights
+        description: "Number of operating flights"
+      
+      - name: flight_completion_rate_pct
+        description: "Percentage of scheduled flights that actually operated"
+      
+      - name: co2_variance_pct
+        description: "Percentage variance between actual and scheduled CO2 emissions"
+      
+      - name: fuel_variance_pct
+        description: "Percentage variance between actual and scheduled fuel burn" 

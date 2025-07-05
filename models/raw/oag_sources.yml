@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: oag_flight_emissions_data_sample
+    database: OAG_FLIGHT_EMISSIONS_DATA_SAMPLE
+    schema: PUBLIC
+    tables:
+      - name: estimated_emissions_schedules_sample
+      - name: estimated_emissions_status_sample 

@@ -1,0 +1,107 @@
+version: 2
+
+models:
+  - name: stg_estimated_emissions_schedules_sample
+    description: "Staging model for estimated emissions data from scheduled flights"
+    columns:
+      - name: scheduled_flight_leg_pk
+        description: "Primary key for the scheduled flight leg"
+        tests:
+          - not_null
+          - unique
+      
+      - name: carrier_code
+        description: "Airline carrier code (e.g., AA, UA, DL)"
+        tests:
+          - not_null
+      
+      - name: outbound_code
+        description: "Outbound flight code indicator"
+        tests:
+          - not_null
+      
+      - name: service_suffix
+        description: "Service suffix for the flight (e.g., A, B, C)"
+        tests:
+          - not_null
+      
+      - name: flight_number
+        description: "Flight number (e.g., 123, 456)"
+        tests:
+          - not_null
+      
+      - name: departure_airport
+        description: "IATA code for departure airport (e.g., JFK, LAX)"
+        tests:
+          - not_null
+      
+      - name: arrival_airport
+        description: "IATA code for arrival airport (e.g., JFK, LAX)"
+        tests:
+          - not_null
+      
+      - name: scheduled_departure_date
+        description: "Scheduled departure date"
+        tests:
+          - not_null
+      
+      - name: aircraft_type
+        description: "Aircraft type code (e.g., B737, A320)"
+      
+      - name: seats
+        description: "Number of seats on the aircraft"
+      
+      - name: estimated_fuel_burn_taxi_out_tonnes
+        description: "Estimated fuel burn during taxi out phase in tonnes"
+      
+      - name: estimated_fuel_burn_takeoff_tonnes
+        description: "Estimated fuel burn during takeoff phase in tonnes"
+      
+      - name: estimated_fuel_burn_climbout_tonnes
+        description: "Estimated fuel burn during climbout phase in tonnes"
+      
+      - name: estimated_fuel_burn_cruise_tonnes
+        description: "Estimated fuel burn during cruise phase in tonnes"
+      
+      - name: estimated_fuel_burn_approach_tonnes
+        description: "Estimated fuel burn during approach phase in tonnes"
+      
+      - name: estimated_fuel_burn_taxi_in_tonnes
+        description: "Estimated fuel burn during taxi in phase in tonnes"
+      
+      - name: estimated_fuel_burn_total_tonnes
+        description: "Total estimated fuel burn for the flight in tonnes"
+      
+      - name: estimated_co2_taxi_out_tonnes
+        description: "Estimated CO2 emissions during taxi out phase in tonnes"
+      
+      - name: estimated_co2_takeoff_tonnes
+        description: "Estimated CO2 emissions during takeoff phase in tonnes"
+      
+      - name: estimated_co2_climbout_tonnes
+        description: "Estimated CO2 emissions during climbout phase in tonnes"
+      
+      - name: estimated_co2_cruise_tonnes
+        description: "Estimated CO2 emissions during cruise phase in tonnes"
+      
+      - name: estimated_co2_approach_tonnes
+        description: "Estimated CO2 emissions during approach phase in tonnes"
+      
+      - name: estimated_co2_taxi_in_tonnes
+        description: "Estimated CO2 emissions during taxi in phase in tonnes"
+      
+      - name: estimated_co2_total_tonnes
+        description: "Total estimated CO2 emissions for the flight in tonnes"
+      
+      - name: missing_reference_flight_times
+        description: "Boolean flag indicating if reference flight times are missing"
+      
+      - name: load_date
+        description: "Date when the data was loaded"
+        tests:
+          - not_null
+      
+      - name: is_operating
+        description: "Boolean flag indicating if the flight is currently operating"
+        tests:
+          - not_null 
