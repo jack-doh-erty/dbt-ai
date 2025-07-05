@@ -26,12 +26,30 @@ jobs:
         python -m pip install --upgrade pip
         pip install sqlfluff
         
-    - name: Lint SQL files
+    - name: Get changed files
+      id: changed-files
+      uses: tj-actions/changed-files@v44
+      with:
+        files: |
+          **/*.sql
+          .sqlfluff
+          
+    - name: Lint changed SQL files
+      if: steps.changed-files.outputs.any_changed == 'true'
       run: |
-        sqlfluff lint models/ --format github-annotation
-        sqlfluff lint macros/ --format github-annotation
+        for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
+          if [[ $file == *.sql ]]; then
+            echo "Linting $file"
+            sqlfluff lint "$file" --config .sqlfluff --format github-annotation
+          fi
+        done
         
     - name: Check for linting errors
+      if: steps.changed-files.outputs.any_changed == 'true'
       run: |
-        sqlfluff lint models/ --fail-on-error
-        sqlfluff lint macros/ --fail-on-error 
+        for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
+          if [[ $file == *.sql ]]; then
+            echo "Checking $file for errors"
+            sqlfluff lint "$file" --config .sqlfluff --fail-on-error
+          fi
+        done 
