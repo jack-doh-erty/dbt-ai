@@ -1,5 +1,7 @@
 # Flight Emissions dbt Project
 
+All the code for this project was written by cursor.
+
 A dbt project for analyzing flight emissions data from OAG (Official Airline Guide) sample datasets. This project transforms raw flight emissions data into analytical models for insights into airline emissions, route efficiency, and aircraft performance.
 
 ## 🚀 Features
